@@ -1,0 +1,18 @@
+FROM rocker/shiny:latest
+
+RUN R -e "install.packages('ranger', repos='https://cloud.r-project.org')"
+
+COPY app.R /srv/shiny-server/app.R
+
+COPY data/crop_production_clean.csv /srv/shiny-server/data/crop_production_clean.csv
+COPY data/best_selling_month.csv /srv/shiny-server/data/best_selling_month.csv
+
+COPY models /srv/shiny-server/models
+
+COPY R /srv/shiny-server/R
+
+RUN sed -i 's/listen 3838;/listen 10000;/' /etc/shiny-server/shiny-server.conf
+
+EXPOSE 10000
+
+CMD ["/usr/bin/shiny-server"]

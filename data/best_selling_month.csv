@@ -1,0 +1,125 @@
+"production_crop","matched_market_crop","Month","Month_Name","Best_Price","distance"
+"Apple","Apple",5,"May",94.64,0
+"Arcanut (Processed)","Castor+Seed",9,"September",52.99,12
+"Arecanut","Coconut",10,"October",204.23,4
+"Arhar/Tur","Amaranthus",12,"December",39.52,6
+"Ash Gourd","Ashgourd",12,"December",25.35,1
+"Atcanut (Raw)","Papaya+(Raw)",5,"May",21.09,7
+"Bajra","Ajwan",3,"March",126.7,3
+"Banana","Banana",6,"June",26.49,0
+"Barley","Garlic",12,"December",98.17,3
+"Bean","Beans",6,"June",49,1
+"Beans & Mutter(Vegetable)","Leafy+Vegetable",7,"July",21.39,14
+"Beet Root","Beetroot",12,"December",39.85,1
+"Ber","Hen",7,"July",76.79,2
+"Bhindi","Tinda",10,"October",34.44,3
+"Bitter Gourd","Bitter+gourd",3,"March",37.09,1
+"Black pepper","Black+pepper",4,"April",366.88,1
+"Blackgram","Balekai",12,"December",22.83,6
+"Bottle Gourd","Bottle+gourd",10,"October",14.16,1
+"Brinjal","Brinjal",10,"October",21.2,0
+"Cabbage","Cabbage",8,"August",20.7,0
+"Cardamom","Cardamoms",10,"October",2785.71,1
+"Carrot","Carrot",8,"August",39.67,0
+"Cashewnut","Cashewnuts",9,"September",224.05,1
+"Cashewnut Processed","Cashewnuts",9,"September",224.05,9
+"Cashewnut Raw","Cashewnuts",9,"September",224.05,4
+"Castor seed","Castor+Seed",9,"September",52.99,1
+"Cauliflower","Cauliflower",10,"October",26.34,0
+"Citrus Fruit","Jack+Fruit",12,"December",21.36,7
+"Coconut ","Coconut",10,"October",204.23,0
+"Coffee","Coffee",4,"April",130.67,0
+"Colocosia","Colacasia",12,"December",38.79,2
+"Cond-spcs other","Cauliflower",10,"October",26.34,11
+"Coriander","Orange",4,"April",59.93,4
+"Cotton(lint)","Cotton",7,"July",59.92,6
+"Cowpea(Lobia)","Cowpea(Veg)",10,"October",47.52,5
+"Cucumber","Rubber",3,"March",156.88,4
+"Drum Stick","Drumstick",12,"December",181.96,1
+"Dry chillies","Dry+Chillies",3,"March",140.51,1
+"Dry ginger","Dry+Fodder",11,"November",6.81,5
+"Garlic","Garlic",12,"December",98.17,0
+"Ginger","Butter",7,"July",37.1,4
+"Gram","Ram",9,"September",85,1
+"Grapes","Grapes",10,"October",93.42,0
+"Groundnut","Groundnut",3,"March",61.36,0
+"Guar seed","Guar",3,"March",50.92,5
+"Horse-gram","Alasande+Gram",3,"March",56.91,7
+"Jack Fruit","Jack+Fruit",12,"December",21.36,1
+"Jobster","Butter",7,"July",37.1,4
+"Jowar","Ajwan",3,"March",126.7,3
+"Jute","Jute",4,"April",69.9,0
+"Jute & mesta","Jute",4,"April",69.9,8
+"Kapas","Grapes",10,"October",93.42,3
+"Khesari","Cherry",7,"July",135.04,4
+"Korra","Copra",3,"March",129.05,2
+"Lab-Lab","Ajwan",3,"March",126.7,5
+"Lemon","Lemon",4,"April",60.25,0
+"Lentil","Lint",4,"April",111.15,3
+"Linseed","Linseed",4,"April",63.85,0
+"Litchi","Litchi",8,"August",95,0
+"Maize","Maize",8,"August",20.33,0
+"Mango","Mango",12,"December",84.4,0
+"Masoor","Mango",12,"December",84.4,3
+"Mesta","Mahua",10,"October",40.39,3
+"Moong(Green Gram)","Ginger(Green)",8,"August",85.05,10
+"Moth","Coca",12,"December",46,3
+"Niger seed","Neem+Seed",9,"September",47.14,4
+"Oilseeds total","Seetafal",6,"June",61,8
+"Onion","Onion",12,"December",62.53,0
+"Orange","Orange",4,"April",59.93,0
+"Other  Rabi pulses","Other+Pulses",3,"March",43.83,7
+"Other Cereals & Millets","Other+Pulses",3,"March",43.83,14
+"Other Citrus Fruit","Tamarind+Fruit",11,"November",75.91,11
+"Other Dry Fruit","Tamarind+Fruit",11,"November",75.91,9
+"other fibres","Other+Pulses",3,"March",43.83,5
+"Other Fresh Fruits","Other+Pulses",3,"March",43.83,11
+"Other Kharif pulses","Other+Pulses",3,"March",43.83,8
+"other misc. pulses","Other+Pulses",3,"March",43.83,7
+"other oilseeds","Other+Pulses",3,"March",43.83,5
+"Other Vegetables","Leafy+Vegetable",7,"July",21.39,7
+"Paddy","Dalda",7,"July",145,3
+"Papaya","Papaya",10,"October",27.44,0
+"Peach","Peach",9,"September",61,0
+"Pear","Guar",3,"March",50.92,2
+"Peas  (vegetable)","Leafy+Vegetable",7,"July",21.39,6
+"Peas & beans (Pulses)","Indian+Beans+(Seam)",6,"June",52.74,13
+"Perilla","Gurellu",12,"December",52.92,4
+"Pineapple","Pineapple",4,"April",42.66,0
+"Plums","Plum",10,"October",73.14,1
+"Pome Fruit","Jack+Fruit",12,"December",21.36,5
+"Pome Granet","Pomegranate",3,"March",70.83,3
+"Potato","Potato",12,"December",15.14,0
+"Pulses total","Seetafal",6,"June",61,7
+"Pump Kin","Pumpkin",12,"December",14.14,1
+"Ragi","Rajgir",12,"December",73.04,2
+"Rajmash Kholar","Amphophalus",6,"June",35.04,9
+"Rapeseed &Mustard","Mustard",4,"April",56.03,10
+"Redish","Raddish",9,"September",12.91,2
+"Ribed Guard","Round+gourd",12,"December",20.67,6
+"Rice","Rice",10,"October",26.96,0
+"Ricebean (nagadal)","Chennangi+Dal",4,"April",74.5,11
+"Rubber","Rubber",3,"March",156.88,0
+"Safflower","Safflower",12,"December",47.27,0
+"Samai","Mataki",4,"April",75.92,3
+"Sannhamp","Sunhemp",3,"March",40,3
+"Sapota","Papaya",10,"October",27.44,3
+"Sesamum","Beans",6,"June",49,5
+"Small millets","Millets",4,"April",29.04,6
+"Snak Guard","Snakeguard",11,"November",34.41,1
+"Soyabean","Soyabean",4,"April",64.08,0
+"Sugarcane","Sugarcane",5,"May",2.8,0
+"Sunflower","Sunflower",3,"March",62.86,0
+"Sweet potato","Sweet+Potato",9,"September",29.03,1
+"Tapioca","Tapioca",6,"June",24.72,0
+"Tea","Hen",7,"July",76.79,2
+"Tobacco","Tobacco",4,"April",78.14,0
+"Tomato","Tomato",10,"October",25.61,0
+"Total foodgrain","Alsandikai",9,"September",32.5,10
+"Turmeric","Turmeric",3,"March",81.31,0
+"Turnip","Turnip",4,"April",25.73,0
+"Urad","Bran",12,"December",11,2
+"Varagu","Banana",6,"June",26.49,4
+"Water Melon","Water+Melon",12,"December",24.38,1
+"Wheat","Wheat",12,"December",20.97,0
+"Yam","Yam",5,"May",62.33,0

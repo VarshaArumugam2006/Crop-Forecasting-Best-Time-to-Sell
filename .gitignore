@@ -1,0 +1,10 @@
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+*.Rproj
+data/crop_production.csv
+data/market_price_clean.csv
+data/monthly_crop_prices.csv
+data/crop_name_mapping.csv
+data/agridata_csv_202110311352.csv
