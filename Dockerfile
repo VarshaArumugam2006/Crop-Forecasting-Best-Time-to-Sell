@@ -15,4 +15,4 @@ RUN sed -i 's/listen 3838;/listen 10000;/' /etc/shiny-server/shiny-server.conf
 
 EXPOSE 10000
 
-CMD ["/usr/bin/shiny-server"]
+CMD ["R", "-e", "shiny::runApp('/srv/shiny-server', host='0.0.0.0', port=10000)"]
