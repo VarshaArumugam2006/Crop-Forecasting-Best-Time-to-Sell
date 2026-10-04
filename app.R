@@ -14,24 +14,37 @@ model <- readRDS(
 )
 
 # ============================================
-# LOAD PRODUCTION DATA
+# LOAD SMALL CROP OPTIONS DATA
 # ============================================
 
-crop_data <- read.csv(
-  "data/crop_production_clean.csv"
+crop_options <- read.csv(
+  "data/crop_options.csv",
+  stringsAsFactors = FALSE
 )
 
-crop_data$State_Name <- as.factor(crop_data$State_Name)
-crop_data$District_Name <- as.factor(crop_data$District_Name)
-crop_data$Season <- as.factor(crop_data$Season)
-crop_data$Crop <- as.factor(crop_data$Crop)
+crop_options$State_Name <- as.factor(
+  crop_options$State_Name
+)
+
+crop_options$District_Name <- as.factor(
+  crop_options$District_Name
+)
+
+crop_options$Season <- as.factor(
+  crop_options$Season
+)
+
+crop_options$Crop <- as.factor(
+  crop_options$Crop
+)
 
 # ============================================
 # LOAD BEST SELLING MONTH DATA
 # ============================================
 
 best_month <- read.csv(
-  "data/best_selling_month.csv"
+  "data/best_selling_month.csv",
+  stringsAsFactors = FALSE
 )
 
 # ============================================
@@ -50,60 +63,93 @@ ui <- fluidPage(
 
       h3("Crop Details"),
 
+      # ----------------------------------------
       # STATE
+      # ----------------------------------------
+
       selectInput(
         "state",
         "Select State:",
         choices = sort(
-          unique(crop_data$State_Name)
+          unique(
+            as.character(
+              crop_options$State_Name
+            )
+          )
         )
       ),
 
+      # ----------------------------------------
       # DISTRICT
+      # ----------------------------------------
+
       selectInput(
         "district",
         "Select District:",
         choices = NULL
       ),
 
+      # ----------------------------------------
       # CROP
+      # ----------------------------------------
+
       selectInput(
         "crop",
         "Select Crop:",
         choices = NULL
       ),
 
+      # ----------------------------------------
       # SEASON
+      # ----------------------------------------
+
       selectInput(
         "season",
         "Select Season:",
         choices = NULL
       ),
 
+      # ----------------------------------------
+      # YEAR
+      # ----------------------------------------
+
       numericInput(
         "year",
         "Crop Year:",
         value = 2025,
         min = 1997,
-        max = 2035
+        max = 2035,
+        step = 1
       ),
+
+      # ----------------------------------------
+      # AREA
+      # ----------------------------------------
 
       numericInput(
         "area",
         "Cultivation Area:",
         value = 100,
-        min = 1
+        min = 1,
+        step = 1
       ),
+
+      br(),
+
+      # ----------------------------------------
+      # PREDICT BUTTON
+      # ----------------------------------------
 
       actionButton(
         "predict",
-        "PREDICT PRODUCTION"
+        "PREDICT PRODUCTION",
+        class = "btn-primary"
       )
     ),
 
-    # ========================================
+    # ==========================================
     # MAIN PANEL
-    # ========================================
+    # ==========================================
 
     mainPanel(
 
@@ -152,8 +198,8 @@ server <- function(
 
       req(input$state)
 
-      districts <- crop_data[
-        crop_data$State_Name == input$state,
+      districts <- crop_options[
+        crop_options$State_Name == input$state,
       ]
 
       districts <- sort(
@@ -164,6 +210,10 @@ server <- function(
         )
       )
 
+      if (length(districts) == 0) {
+        return()
+      }
+
       updateSelectInput(
         session,
         "district",
@@ -171,16 +221,16 @@ server <- function(
         selected = districts[1]
       )
     },
+
     ignoreInit = FALSE
   )
-
 
   # ==========================================
   # STATE + DISTRICT → CROP
   # ==========================================
 
   observeEvent(
-    c(
+    list(
       input$state,
       input$district
     ),
@@ -191,9 +241,9 @@ server <- function(
         input$district
       )
 
-      crops <- crop_data[
-        crop_data$State_Name == input$state &
-        crop_data$District_Name == input$district,
+      crops <- crop_options[
+        crop_options$State_Name == input$state &
+        crop_options$District_Name == input$district,
       ]
 
       crops <- sort(
@@ -204,6 +254,10 @@ server <- function(
         )
       )
 
+      if (length(crops) == 0) {
+        return()
+      }
+
       updateSelectInput(
         session,
         "crop",
@@ -211,16 +265,16 @@ server <- function(
         selected = crops[1]
       )
     },
+
     ignoreInit = FALSE
   )
-
 
   # ==========================================
   # STATE + DISTRICT + CROP → SEASON
   # ==========================================
 
   observeEvent(
-    c(
+    list(
       input$state,
       input$district,
       input$crop
@@ -233,10 +287,10 @@ server <- function(
         input$crop
       )
 
-      seasons <- crop_data[
-        crop_data$State_Name == input$state &
-        crop_data$District_Name == input$district &
-        crop_data$Crop == input$crop,
+      seasons <- crop_options[
+        crop_options$State_Name == input$state &
+        crop_options$District_Name == input$district &
+        crop_options$Crop == input$crop,
       ]
 
       seasons <- sort(
@@ -247,6 +301,10 @@ server <- function(
         )
       )
 
+      if (length(seasons) == 0) {
+        return()
+      }
+
       updateSelectInput(
         session,
         "season",
@@ -254,9 +312,9 @@ server <- function(
         selected = seasons[1]
       )
     },
+
     ignoreInit = FALSE
   )
-
 
   # ==========================================
   # PRODUCTION + SELLING PREDICTION
@@ -270,60 +328,66 @@ server <- function(
         input$state,
         input$district,
         input$crop,
-        input$season
+        input$season,
+        input$year,
+        input$area
       )
 
-      # ======================================
-      # CREATE NEW DATA FOR MODEL
-      # ======================================
+      # ========================================
+      # CREATE INPUT FOR MODEL
+      # ========================================
 
       new_data <- data.frame(
 
         State_Name = factor(
           input$state,
           levels = levels(
-            crop_data$State_Name
+            crop_options$State_Name
           )
         ),
 
         District_Name = factor(
           input$district,
           levels = levels(
-            crop_data$District_Name
+            crop_options$District_Name
           )
         ),
 
-        Crop_Year = input$year,
+        Crop_Year = as.numeric(
+          input$year
+        ),
 
         Season = factor(
           input$season,
           levels = levels(
-            crop_data$Season
+            crop_options$Season
           )
         ),
 
         Crop = factor(
           input$crop,
           levels = levels(
-            crop_data$Crop
+            crop_options$Crop
           )
         ),
 
-        Area = input$area
+        Area = as.numeric(
+          input$area
+        )
       )
 
-      # ======================================
+      # ========================================
       # PREDICT PRODUCTION
-      # ======================================
+      # ========================================
 
       prediction <- predict(
         model,
         data = new_data
       )$predictions
 
-      # ======================================
+      # ========================================
       # DISPLAY PRODUCTION
-      # ======================================
+      # ========================================
 
       output$prediction <- renderText({
 
@@ -338,10 +402,9 @@ server <- function(
 
       })
 
-
-      # ======================================
+      # ========================================
       # FIND BEST SELLING MONTH
-      # ======================================
+      # ========================================
 
       crop_result <- best_month[
         tolower(
@@ -356,10 +419,9 @@ server <- function(
         ),
       ]
 
-
-      # ======================================
+      # ========================================
       # DISPLAY SELLING ADVICE
-      # ======================================
+      # ========================================
 
       output$selling_advice <- renderText({
 
@@ -411,7 +473,6 @@ server <- function(
 
     }
   )
-
 
   # ==========================================
   # SELECTED CROP INFORMATION
