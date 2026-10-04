@@ -1,24 +1,24 @@
-# =========================================
-# CROP PRODUCTION PREDICTION MODEL
-# RANGER RANDOM FOREST
-# =========================================
+# ============================================
+# CROP PRODUCTION MODEL TRAINING
+# ============================================
 
-# Load Ranger package
 library(ranger)
 
-
-# =========================================
-# LOAD CLEANED DATASET
-# =========================================
+# ============================================
+# LOAD CLEAN PRODUCTION DATA
+# ============================================
 
 crop_data <- read.csv(
-  "data/crop_production_clean.csv"
+  "data/crop_production_clean.csv",
+  stringsAsFactors = FALSE
 )
 
+cat("Production data loaded:\n")
+print(dim(crop_data))
 
-# =========================================
-# CONVERT TEXT COLUMNS TO FACTORS
-# =========================================
+# ============================================
+# CONVERT CATEGORICAL COLUMNS TO FACTORS
+# ============================================
 
 crop_data$State_Name <- as.factor(
   crop_data$State_Name
@@ -36,12 +36,14 @@ crop_data$Crop <- as.factor(
   crop_data$Crop
 )
 
+# ============================================
+# TRAIN SMALL RANGER MODEL
+# ============================================
 
-# =========================================
-# TRAIN RANDOM FOREST MODEL
-# =========================================
+cat("\nTraining smaller model...\n")
 
 model <- ranger(
+
   Production ~
     State_Name +
     District_Name +
@@ -49,40 +51,61 @@ model <- ranger(
     Season +
     Crop +
     Area,
+
   data = crop_data,
-  num.trees = 100,
-  importance = "impurity"
+
+  # Fewer trees = much smaller model
+  num.trees = 5,
+
+  # Larger nodes = smaller trees
+  min.node.size = 20,
+
+  # Limit tree depth
+  max.depth = 12,
+
+  # Reduce memory usage during training
+  save.memory = TRUE,
+
+  importance = "impurity",
+
+  seed = 123
+
 )
 
-
-# =========================================
-# DISPLAY MODEL
-# =========================================
+# ============================================
+# DISPLAY MODEL INFORMATION
+# ============================================
 
 print(model)
 
+cat("\nVariable Importance:\n")
 
-# =========================================
-# DISPLAY VARIABLE IMPORTANCE
-# =========================================
+print(
+  model$variable.importance
+)
 
-print(model$variable.importance)
-
-
-# =========================================
-# SAVE TRAINED MODEL
-# =========================================
+# ============================================
+# SAVE MODEL
+# ============================================
 
 saveRDS(
   model,
-  "models/crop_production_model.rds"
+  "models/crop_production_model.rds",
+  compress = TRUE
 )
 
+# ============================================
+# COMPLETED
+# ============================================
 
-# =========================================
-# SUCCESS MESSAGE
-# =========================================
+cat("\n====================================\n")
+cat("SMALL MODEL TRAINING COMPLETED!\n")
+cat("====================================\n")
 
-cat("\n=================================\n")
-cat("MODEL TRAINING COMPLETED!\n")
-cat("=================================\n")
+cat(
+  "\nModel saved to:\n"
+)
+
+cat(
+  "models/crop_production_model.rds\n"
+)
