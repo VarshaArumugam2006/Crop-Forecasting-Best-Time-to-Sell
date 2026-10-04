@@ -9,8 +9,6 @@ COPY data/best_selling_month.csv /srv/shiny-server/data/best_selling_month.csv
 
 COPY models /srv/shiny-server/models
 
-COPY R /srv/shiny-server/R
-
 RUN sed -i 's/listen 3838;/listen 10000;/' /etc/shiny-server/shiny-server.conf
 
 EXPOSE 10000
